@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="./node_modules/socket.io/client-dist/socket.io.js"></script>
+<script>
+    var socket = io.connect('ws://localhost:5000');
+    socket.on('connect', function () {
+        console.log('建立连接成功！');
+    });
+    socket.emit('my other event', { my: 'data' })
+    socket.on('news', function (data) {
+        console.log(data);
+    });
+    window.socket = socket
+</script>
+</body>
+</html>
